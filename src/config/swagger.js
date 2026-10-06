@@ -7,12 +7,25 @@ const options = {
     info: {
       title: "User API",
       version: "1.0.0",
-      description: "REST API for user management and authentication",
+      description:
+        "REST API for user management, authentication and authorization",
     },
 
     servers: [
       {
         url: "http://localhost:5000/api",
+        description: "Local server",
+      },
+    ],
+
+    tags: [
+      {
+        name: "Auth",
+        description: "Authentication endpoints",
+      },
+      {
+        name: "Users",
+        description: "User management endpoints",
       },
     ],
 
@@ -29,41 +42,27 @@ const options = {
         User: {
           type: "object",
           properties: {
-            id: {
+            _id: {
               type: "string",
-              example: "65f123456789abcdef123456",
+              example: "66f123abc456def789",
             },
             name: {
               type: "string",
               example: "Ahmed",
             },
             age: {
-              type: "number",
+              type: "integer",
               example: 25,
             },
             email: {
               type: "string",
+              format: "email",
               example: "ahmed@gmail.com",
             },
             role: {
               type: "string",
               enum: ["user", "admin"],
               example: "user",
-            },
-          },
-        },
-
-        Login: {
-          type: "object",
-          required: ["email", "password"],
-          properties: {
-            email: {
-              type: "string",
-              example: "ahmed@gmail.com",
-            },
-            password: {
-              type: "string",
-              example: "123456",
             },
           },
         },
@@ -77,16 +76,35 @@ const options = {
               example: "Ahmed",
             },
             age: {
-              type: "number",
+              type: "integer",
               example: 25,
             },
             email: {
               type: "string",
+              format: "email",
               example: "ahmed@gmail.com",
             },
             password: {
               type: "string",
-              example: "123456",
+              format: "password",
+              example: "Password123",
+            },
+          },
+        },
+
+        Login: {
+          type: "object",
+          required: ["email", "password"],
+          properties: {
+            email: {
+              type: "string",
+              format: "email",
+              example: "ahmed@gmail.com",
+            },
+            password: {
+              type: "string",
+              format: "password",
+              example: "Password123",
             },
           },
         },
@@ -97,11 +115,13 @@ const options = {
           properties: {
             currentPassword: {
               type: "string",
-              example: "123456",
+              format: "password",
+              example: "OldPassword123",
             },
             newPassword: {
               type: "string",
-              example: "654321",
+              format: "password",
+              example: "NewPassword123",
             },
           },
         },
@@ -112,6 +132,7 @@ const options = {
           properties: {
             email: {
               type: "string",
+              format: "email",
               example: "ahmed@gmail.com",
             },
           },
@@ -119,11 +140,26 @@ const options = {
 
         ResetPassword: {
           type: "object",
-          required: ["newPassword"],
+          required: ["password"],
           properties: {
-            newPassword: {
+            password: {
               type: "string",
-              example: "654321",
+              format: "password",
+              example: "NewPassword123",
+            },
+          },
+        },
+
+        Error: {
+          type: "object",
+          properties: {
+            status: {
+              type: "string",
+              example: "fail",
+            },
+            message: {
+              type: "string",
+              example: "Something went wrong",
             },
           },
         },
