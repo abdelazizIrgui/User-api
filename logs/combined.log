@@ -88,3 +88,4 @@
 {"level":"info","message":"\u001b[0mGET /api-docs/swagger-ui-standalone-preset.js \u001b[32m200\u001b[0m 257.752 ms - 268713\u001b[0m","timestamp":"2026-10-04T10:10:41.779Z"}
 {"level":"info","message":"\u001b[0mGET /api-docs/swagger-ui-bundle.js \u001b[32m200\u001b[0m 393.293 ms - 1553809\u001b[0m","timestamp":"2026-10-04T10:10:41.913Z"}
 {"level":"info","message":"\u001b[0mGET /api-docs/favicon-32x32.png \u001b[32m200\u001b[0m 3.103 ms - 628\u001b[0m","timestamp":"2026-10-04T10:10:42.355Z"}
+{"level":"info","message":"\u001b[0mGET /api/users \u001b[33m401\u001b[0m 21.866 ms - 59\u001b[0m","timestamp":"2026-10-06T09:30:05.826Z"}
